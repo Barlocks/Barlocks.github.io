@@ -1,787 +1,827 @@
-/* =========================================
-   ОСНОВНЫЕ НАСТРОЙКИ
-========================================= */
+/* ==================================================
+   СБРОС
+================================================== */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
 }
 
+/* ==================================================
+   ОСНОВА СТРАНИЦЫ
+
+   Десктоп:
+   1920px × 1080px
+
+   Вся страница чёрная,
+   поэтому серых рамок быть не должно.
+================================================== */
+
 html {
-    background: #111;
-    scroll-behavior: smooth;
+  width: 100%;
+  min-height: 100%;
+
+  background: #000;
+
+  scroll-behavior: smooth;
 }
 
 body {
-    min-height: 100vh;
-    background: #111;
-    color: #fff;
-    overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
 
-    font-family: Georgia, "Times New Roman", serif;
+  margin: 0;
+  padding: 0;
+
+  background: #000;
+
+  color: #fff;
+
+  overflow-x: hidden;
+
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-
-/* =========================================
-   ОСНОВНОЙ САЙТ
-========================================= */
+/* ==================================================
+   ОСНОВНАЯ ОБЛАСТЬ САЙТА
+================================================== */
 
 .site {
-    position: relative;
+  position: relative;
 
-    width: min(1400px, 100%);
-    min-height: 100vh;
+  width: 100%;
+  max-width: 1920px;
 
-    margin: 0 auto;
+  min-height: 100vh;
 
-    background: #000;
+  margin: 0 auto;
 
-    overflow: hidden;
+  background: #000;
+
+  overflow: hidden;
 }
 
-
-/* =========================================
-   ПЕРВЫЙ ЭКРАН
-========================================= */
+/* ==================================================
+   ОСНОВНАЯ СЕКЦИЯ
+================================================== */
 
 .hero {
-    position: relative;
+  position: relative;
 
-    min-height: 900px;
+  width: 100%;
 
-    padding: 25px 55px 60px;
+  min-height: 1080px;
 
-    overflow: hidden;
+  padding: 35px 70px 80px;
+
+  background: #000;
+
+  overflow: hidden;
 }
 
-
-/* =========================================
-   ВЕРХНЯЯ СТРОКА
-========================================= */
+/* ==================================================
+   ВЕРХНЯЯ ПАНЕЛЬ
+================================================== */
 
 .topbar {
-    display: flex;
+  display: flex;
 
-    align-items: center;
-    justify-content: space-between;
+  align-items: center;
 
-    width: 100%;
+  width: 100%;
 
-    color: #fff;
+  color: #fff;
 
-    font-family:
-        "Brush Script MT",
-        "Segoe Print",
-        cursive;
+  font-family: "Brush Script MT", "Segoe Print", cursive;
 
-    font-size: 20px;
+  font-size: 20px;
 
-    line-height: 1;
+  line-height: 1;
 
-    white-space: nowrap;
+  white-space: nowrap;
 }
+
+/* Левый текст */
+
+.topbar-left {
+  width: 33.333%;
+}
+
+/* VK */
+
+.topbar-center {
+  width: 33.333%;
+
+  text-align: center;
+}
+
+/* Zvezdniy Breeze */
 
 .topbar-right {
-    font-size: 17px;
+  width: 33.333%;
+
+  text-align: right;
+
+  font-size: 18px;
 }
 
-
-/* =========================================
-   ПЕРВЫЙ БЛОК С ТЕКСТОМ И ФОТО
-========================================= */
+/* ==================================================
+   ВЕРХНИЙ БЛОК
+================================================== */
 
 .hero-content {
-    display: grid;
+  display: grid;
 
-    grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-columns:
+    minmax(0, 1fr)
+    300px;
 
-    column-gap: 80px;
+  column-gap: 90px;
 
-    align-items: start;
+  align-items: start;
 
-    max-width: 1100px;
+  width: 100%;
 
-    margin: 75px auto 0;
+  max-width: 1250px;
+
+  margin: 90px auto 0;
+
+  animation: fadeUp 0.8s ease both;
 }
 
+/* ==================================================
+   ТЕКСТ
+================================================== */
 
 .intro {
-    min-width: 0;
+  min-width: 0;
 
-    padding-top: 20px;
+  padding-top: 25px;
 }
-
 
 .intro h1,
 .people h2,
 .moments h2 {
-    font-family:
-        "Brush Script MT",
-        "Segoe Print",
-        cursive;
+  font-family: "Brush Script MT", "Segoe Print", cursive;
 
-    font-weight: 400;
-    font-style: italic;
+  font-weight: 400;
+
+  font-style: italic;
 }
 
+/* Заголовок This summer */
 
 .intro h1 {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 
-    color: #ef1717;
+  color: #ef1717;
 
-    font-size: clamp(38px, 4vw, 62px);
+  font-size: clamp(40px, 4vw, 64px);
 
-    line-height: 1;
+  line-height: 1;
 }
 
+/* Основной текст */
 
 .intro p {
-    max-width: 700px;
+  max-width: 720px;
 
-    color: #fff;
+  color: #fff;
 
-    font-family:
-        "Segoe Print",
-        "Comic Sans MS",
-        cursive;
+  font-family: "Segoe Print", "Comic Sans MS", cursive;
 
-    font-size: 17px;
+  font-size: 17px;
 
-    line-height: 1.6;
+  line-height: 1.6;
 
-    text-align: left;
+  text-align: left;
 }
 
-
-/* =========================================
-   БОЛЬШАЯ ФОТОГРАФИЯ
-========================================= */
+/* ==================================================
+   ФОТОГРАФИЯ СПРАВА
+================================================== */
 
 .portrait-wrap {
-    width: 300px;
-    height: 420px;
+  width: 300px;
 
-    overflow: hidden;
+  height: 420px;
 
-    box-shadow: 0 0 0 1px rgba(255,255,255,.05);
+  overflow: hidden;
+
+  background: #111;
 }
-
 
 .portrait-wrap img {
-    display: block;
+  display: block;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    object-fit: cover;
+  object-fit: cover;
 
-    transition:
-        transform .5s ease,
-        filter .5s ease;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
 }
-
 
 .portrait-wrap:hover img {
-    transform: scale(1.035);
+  transform: scale(1.035);
 
-    filter: brightness(1.08);
+  filter: brightness(1.08);
 }
 
-
-/* =========================================
+/* ==================================================
    BEST MOMENTS
-========================================= */
+================================================== */
 
 .moments {
-    position: relative;
+  position: relative;
 
-    margin-top: 100px;
+  width: 100%;
+
+  margin-top: 110px;
+
+  animation: fadeUp 0.8s ease 0.15s both;
 }
-
 
 .moments h2 {
-    margin: 0 0 25px auto;
+  width: max-content;
 
-    width: max-content;
+  margin: 0 90px 25px auto;
 
-    color: #fff;
+  color: #fff;
 
-    font-size: clamp(38px, 4vw, 58px);
+  font-size: clamp(40px, 4vw, 60px);
 
-    line-height: 1;
+  line-height: 1;
 
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
-
-/* =========================================
+/* ==================================================
    КАРУСЕЛЬ
-========================================= */
+
+   Она специально немного шире основной области,
+   чтобы фотографии визуально доходили до края.
+================================================== */
 
 .carousel-wrap {
-    position: relative;
+  position: relative;
 
-    width: calc(100% + 250px);
+  width: calc(100% + 140px);
 
-    margin-left: -55px;
+  margin-left: -70px;
+
+  overflow: hidden;
 }
-
 
 .carousel-window {
-    width: 100%;
+  width: 100%;
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
+/* ==================================================
+   ЛЕНТА КАРУСЕЛИ
+================================================== */
 
 .carousel-track {
-    display: flex;
+  display: flex;
 
-    gap: 18px;
+  gap: 18px;
 
-    width: max-content;
+  width: max-content;
 
-    transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 
-    transition:
-        transform .55s cubic-bezier(.22,.61,.36,1);
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
 
-    will-change: transform;
+  will-change: transform;
+
+  cursor: default;
 }
 
+/* ==================================================
+   ФОТОГРАФИИ КАРУСЕЛИ
+================================================== */
 
 .carousel-track img {
-    display: block;
+  display: block;
 
-    flex: 0 0 155px;
+  flex: 0 0 155px;
 
-    width: 155px;
-    height: 260px;
+  width: 155px;
 
-    object-fit: cover;
+  height: 260px;
 
-    user-select: none;
+  object-fit: cover;
 
-    -webkit-user-drag: none;
+  user-select: none;
 
-    cursor: pointer;
+  -webkit-user-drag: none;
 
-    transition:
-        transform .35s ease,
-        filter .35s ease;
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
 }
-
 
 .carousel-track img:hover {
-    transform: translateY(-8px) scale(1.025);
+  transform: translateY(-8px) scale(1.025);
 
-    filter: brightness(1.1);
+  filter: brightness(1.1);
 }
 
-
-/* =========================================
+/* ==================================================
    СТРЕЛКИ
-========================================= */
+================================================== */
 
 .carousel-controls {
-    display: flex;
+  display: flex;
 
-    justify-content: flex-end;
+  justify-content: flex-end;
 
-    gap: 18px;
+  align-items: center;
 
-    padding: 22px 55px 0 0;
+  gap: 18px;
+
+  padding: 22px 70px 0 0;
 }
-
 
 .arrow {
-    display: flex;
+  display: flex;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    width: 42px;
-    height: 42px;
+  width: 45px;
+  height: 45px;
 
-    border: none;
+  padding: 0;
 
-    background: transparent;
+  border: none;
 
-    color: #fff;
+  background: transparent;
 
-    cursor: pointer;
+  color: #fff;
 
-    font-family: Arial, sans-serif;
+  cursor: pointer;
 
-    font-size: 42px;
+  font-family: Arial, sans-serif;
 
-    font-weight: 200;
+  font-size: 42px;
 
-    line-height: 1;
+  font-weight: 200;
 
-    transition:
-        transform .2s ease,
-        opacity .2s ease;
+  line-height: 1;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
-
 
 .arrow:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 
-    opacity: .7;
+  opacity: 0.7;
 }
-
 
 .arrow:active {
-    transform: scale(.85);
+  transform: scale(0.85);
 }
 
-
-/* =========================================
+/* ==================================================
    WONDERFUL PEOPLE
-========================================= */
+================================================== */
 
 .people {
-    margin-top: 80px;
-}
+  width: 100%;
 
+  margin-top: 75px;
+
+  animation: fadeUp 0.8s ease 0.3s both;
+}
 
 .people h2 {
-    margin-bottom: 35px;
+  margin-bottom: 35px;
 
-    color: #fff;
+  color: #fff;
 
-    font-size: clamp(40px, 4vw, 58px);
+  font-size: clamp(40px, 4vw, 60px);
 
-    line-height: 1;
+  line-height: 1;
 }
 
-
-/* =========================================
+/* ==================================================
    КОЛЛАЖ
-========================================= */
+================================================== */
 
 .people-grid {
-    position: relative;
+  position: relative;
 
-    display: block;
+  display: block;
 
-    width: 100%;
-    max-width: 1000px;
+  width: 100%;
 
-    height: 430px;
+  max-width: 1000px;
 
-    overflow: hidden;
+  height: 430px;
+
+  overflow: hidden;
 }
 
+/* Все фотографии */
 
 .people-grid img {
-    position: absolute;
+  position: absolute;
 
-    display: block;
+  display: block;
 
-    object-fit: cover;
+  object-fit: cover;
 
-    transition:
-        transform .4s ease,
-        filter .4s ease;
+  cursor: pointer;
 
-    cursor: pointer;
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
 }
-
 
 .people-grid img:hover {
-    z-index: 5;
+  z-index: 5;
 
-    transform: scale(1.025);
+  transform: scale(1.025);
 
-    filter: brightness(1.08);
+  filter: brightness(1.08);
 }
 
-
-/* Левая фотография */
+/* ==================================================
+   ПЕРВАЯ ФОТОГРАФИЯ
+================================================== */
 
 .people-grid img:nth-child(1) {
-    left: 0;
-    top: 0;
+  left: 0;
+  top: 0;
 
-    width: 31%;
-    height: 100%;
+  width: 31%;
+  height: 100%;
 }
 
-
-/* Центральная верхняя */
+/* ==================================================
+   ВТОРАЯ ФОТОГРАФИЯ
+================================================== */
 
 .people-grid img:nth-child(2) {
-    left: 31%;
-    top: 0;
+  left: 31%;
+  top: 0;
 
-    width: 35%;
-    height: 50%;
+  width: 35%;
+  height: 50%;
 }
 
-
-/* Центральная нижняя */
+/* ==================================================
+   ТРЕТЬЯ ФОТОГРАФИЯ
+================================================== */
 
 .people-grid img:nth-child(3) {
-    left: 31%;
-    top: 50%;
+  left: 31%;
+  top: 50%;
 
-    width: 35%;
-    height: 50%;
+  width: 35%;
+  height: 50%;
 }
 
-
-/* Правая фотография */
+/* ==================================================
+   ЧЕТВЁРТАЯ ФОТОГРАФИЯ
+================================================== */
 
 .people-grid img:nth-child(4) {
-    left: 66%;
-    top: 0;
+  left: 66%;
+  top: 0;
 
-    width: 34%;
-    height: 100%;
+  width: 34%;
+  height: 100%;
 }
 
-
-/* =========================================
+/* ==================================================
    ЗАКЛЮЧИТЕЛЬНЫЙ ТЕКСТ
-========================================= */
+================================================== */
 
 .ending {
-    margin-top: 25px;
+  margin-top: 25px;
 
-    color: #fff;
+  color: #fff;
 
-    font-family:
-        "Brush Script MT",
-        "Segoe Print",
-        cursive;
+  font-family: "Brush Script MT", "Segoe Print", cursive;
 
-    font-size: clamp(25px, 2.5vw, 38px);
+  font-size: clamp(25px, 2.5vw, 38px);
 
-    font-style: italic;
+  font-style: italic;
 
-    line-height: 1.15;
+  line-height: 1.15;
 }
 
-
-/* =========================================
-   НЕБОЛЬШАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ
-========================================= */
-
-.hero-content {
-    animation: fadeUp .8s ease both;
-}
-
-.moments {
-    animation: fadeUp .8s ease .15s both;
-}
-
-.people {
-    animation: fadeUp .8s ease .3s both;
-}
-
+/* ==================================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ
+================================================== */
 
 @keyframes fadeUp {
+  from {
+    opacity: 0;
 
-    from {
-        opacity: 0;
+    transform: translateY(25px);
+  }
 
-        transform: translateY(20px);
-    }
+  to {
+    opacity: 1;
 
-    to {
-        opacity: 1;
-
-        transform: translateY(0);
-    }
-
+    transform: translateY(0);
+  }
 }
 
-
-/* =========================================
+/* ==================================================
    ПЛАНШЕТ
-========================================= */
+================================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
+  .hero {
+    padding: 30px 45px 60px;
+  }
 
-    .hero {
-        padding: 25px 30px 50px;
-    }
+  .hero-content {
+    grid-template-columns:
+      minmax(0, 1fr)
+      250px;
 
+    column-gap: 50px;
 
-    .hero-content {
-        grid-template-columns: minmax(0, 1fr) 230px;
+    margin-top: 65px;
+  }
 
-        column-gap: 40px;
+  .portrait-wrap {
+    width: 250px;
 
-        margin-top: 60px;
-    }
+    height: 350px;
+  }
 
+  .intro p {
+    font-size: 14px;
+  }
 
-    .portrait-wrap {
-        width: 230px;
-        height: 330px;
-    }
+  .carousel-wrap {
+    width: calc(100% + 90px);
 
+    margin-left: -45px;
+  }
 
-    .intro p {
-        font-size: 14px;
-    }
+  .carousel-track img {
+    flex-basis: 125px;
 
+    width: 125px;
 
-    .carousel-wrap {
-        width: calc(100% + 100px);
+    height: 210px;
+  }
 
-        margin-left: -30px;
-    }
-
-
-    .carousel-track img {
-        flex-basis: 120px;
-
-        width: 120px;
-        height: 205px;
-    }
-
-
-    .people-grid {
-        height: 330px;
-    }
-
+  .people-grid {
+    height: 350px;
+  }
 }
 
-
-/* =========================================
+/* ==================================================
    МОБИЛЬНАЯ ВЕРСИЯ
-========================================= */
+================================================== */
 
 @media (max-width: 600px) {
+  html,
+  body {
+    width: 100%;
 
-    body {
-        background: #000;
-    }
+    min-height: 100%;
 
+    background: #000;
+  }
 
-    .site {
-        width: 100%;
+  .site {
+    width: 100%;
 
-        margin: 0;
+    max-width: none;
 
-        overflow: hidden;
-    }
+    margin: 0;
 
+    background: #000;
 
-    .hero {
-        min-height: 100vh;
+    overflow: hidden;
+  }
 
-        padding:
-            18px
-            16px
-            45px;
-    }
+  .hero {
+    width: 100%;
 
+    min-height: 100vh;
 
-    /* Верхняя строка */
+    padding: 18px 16px 45px;
+  }
 
-    .topbar {
-        font-size: 14px;
+  /* -----------------------------------------
+       Верхняя строка
+    ----------------------------------------- */
 
-        gap: 10px;
-    }
+  .topbar {
+    font-size: 14px;
 
+    gap: 5px;
+  }
 
-    .topbar-right {
-        font-size: 12px;
-    }
+  .topbar-left,
+  .topbar-center,
+  .topbar-right {
+    width: 33.333%;
+  }
 
+  .topbar-center {
+    text-align: center;
+  }
 
-    /* Верхний блок */
+  .topbar-right {
+    font-size: 11px;
 
-    .hero-content {
-        display: grid;
+    text-align: right;
+  }
 
-        grid-template-columns: 1fr 115px;
+  /* -----------------------------------------
+       Верхний блок
+    ----------------------------------------- */
 
-        column-gap: 18px;
+  .hero-content {
+    display: grid;
 
-        margin-top: 45px;
-    }
+    grid-template-columns:
+      minmax(0, 1fr)
+      115px;
 
+    column-gap: 18px;
 
-    .intro {
-        padding-top: 5px;
-    }
+    width: 100%;
 
+    margin-top: 45px;
+  }
 
-    .intro h1 {
-        margin-bottom: 16px;
+  .intro {
+    padding-top: 5px;
+  }
 
-        font-size: 32px;
-    }
+  .intro h1 {
+    margin-bottom: 16px;
 
+    font-size: 32px;
+  }
 
-    .intro p {
-        font-size: 9px;
+  .intro p {
+    font-size: 9px;
 
-        line-height: 1.45;
-    }
+    line-height: 1.45;
+  }
 
+  .portrait-wrap {
+    width: 115px;
 
-    .portrait-wrap {
-        width: 115px;
-        height: 165px;
-    }
+    height: 165px;
+  }
 
+  /* -----------------------------------------
+       Best moments
+    ----------------------------------------- */
 
-    /* Best moments */
+  .moments {
+    margin-top: 65px;
+  }
 
-    .moments {
-        margin-top: 65px;
-    }
+  .moments h2 {
+    margin: 0 5px 18px auto;
 
+    font-size: 30px;
+  }
 
-    .moments h2 {
-        margin-bottom: 18px;
-        margin-right: 5px;
+  /* -----------------------------------------
+       Карусель
+    ----------------------------------------- */
 
-        font-size: 30px;
-    }
+  .carousel-wrap {
+    width: calc(100% + 70px);
 
+    margin-left: -16px;
+  }
 
-    /* Карусель */
+  .carousel-track {
+    gap: 9px;
+  }
 
-    .carousel-wrap {
-        width: calc(100% + 80px);
+  .carousel-track img {
+    flex: 0 0 68px;
 
-        margin-left: -16px;
-    }
+    width: 68px;
 
+    height: 118px;
+  }
 
-    .carousel-window {
-        width: 100%;
-    }
+  .carousel-controls {
+    gap: 5px;
 
+    padding: 8px 20px 0 0;
+  }
 
-    .carousel-track {
-        gap: 9px;
-    }
+  .arrow {
+    width: 30px;
 
+    height: 30px;
 
-    .carousel-track img {
-        flex: 0 0 68px;
+    font-size: 27px;
+  }
 
-        width: 68px;
-        height: 118px;
-    }
+  /* -----------------------------------------
+       Wonderful people
+    ----------------------------------------- */
 
+  .people {
+    margin-top: 35px;
+  }
 
-    .carousel-controls {
-        gap: 5px;
+  .people h2 {
+    margin-bottom: 16px;
 
-        padding:
-            8px
-            20px
-            0
-            0;
-    }
+    font-size: 31px;
+  }
 
+  .people-grid {
+    width: 100%;
 
-    .arrow {
-        width: 30px;
-        height: 30px;
+    height: 190px;
+  }
 
-        font-size: 27px;
-    }
+  .ending {
+    margin-top: 12px;
 
-
-    /* Wonderful people */
-
-    .people {
-        margin-top: 35px;
-    }
-
-
-    .people h2 {
-        margin-bottom: 16px;
-
-        font-size: 31px;
-    }
-
-
-    .people-grid {
-        width: 100%;
-
-        height: 190px;
-    }
-
-
-    .ending {
-        margin-top: 12px;
-
-        font-size: 20px;
-    }
-
+    font-size: 20px;
+  }
 }
 
-
-/* =========================================
-   СОВСЕМ МАЛЕНЬКИЕ ЭКРАНЫ
-========================================= */
+/* ==================================================
+   ОЧЕНЬ МАЛЕНЬКИЙ ТЕЛЕФОН
+================================================== */
 
 @media (max-width: 380px) {
+  .hero {
+    padding: 15px 12px 40px;
+  }
 
-    .hero {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
+  .topbar {
+    font-size: 12px;
+  }
 
+  .topbar-right {
+    font-size: 9px;
+  }
 
-    .hero-content {
-        grid-template-columns: 1fr 95px;
+  .hero-content {
+    grid-template-columns:
+      minmax(0, 1fr)
+      95px;
 
-        column-gap: 12px;
-    }
+    column-gap: 12px;
+  }
 
+  .portrait-wrap {
+    width: 95px;
 
-    .portrait-wrap {
-        width: 95px;
-        height: 145px;
-    }
+    height: 145px;
+  }
 
+  .intro h1 {
+    font-size: 28px;
+  }
 
-    .intro h1 {
-        font-size: 28px;
-    }
+  .intro p {
+    font-size: 8px;
+  }
 
+  .moments h2 {
+    font-size: 27px;
+  }
 
-    .intro p {
-        font-size: 8px;
-    }
+  .carousel-track img {
+    flex-basis: 62px;
 
+    width: 62px;
 
-    .moments h2 {
-        font-size: 27px;
-    }
+    height: 108px;
+  }
 
+  .people-grid {
+    height: 170px;
+  }
 
-    .carousel-track img {
-        flex-basis: 62px;
-
-        width: 62px;
-        height: 108px;
-    }
-
-
-    .people-grid {
-        height: 170px;
-    }
-
-
-    .ending {
-        font-size: 18px;
-    }
-
+  .ending {
+    font-size: 18px;
+  }
 }
