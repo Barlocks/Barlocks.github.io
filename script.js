@@ -1,262 +1,357 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /* ==================================================
+       ПОЛУЧАЕМ ЭЛЕМЕНТЫ
+    ================================================== */
 
-    const track = document.getElementById("momentsTrack");
-    const prevButton = document.getElementById("prevMoment");
-    const nextButton = document.getElementById("nextMoment");
+  const track = document.getElementById("momentsTrack");
 
-    if (!track || !prevButton || !nextButton) {
-        return;
+  const prevButton = document.getElementById("prevMoment");
+
+  const nextButton = document.getElementById("nextMoment");
+
+  /*
+   * Если чего-то нет в HTML —
+   * скрипт просто не запускается.
+   */
+
+  if (!track || !prevButton || !nextButton) {
+    return;
+  }
+
+  /* ==================================================
+       ОРИГИНАЛЬНЫЕ ФОТО
+    ================================================== */
+
+  const originalSlides = Array.from(track.querySelectorAll("img"));
+
+  if (originalSlides.length === 0) {
+    return;
+  }
+
+  const originalCount = originalSlides.length;
+
+  /* ==================================================
+       СОЗДАЁМ КОПИИ
+
+       Было:
+
+       1 2 3 4 5 6 7 8
+
+       Станет:
+
+       1 2 3 4 5 6 7 8
+       1 2 3 4 5 6 7 8
+
+       А слева добавляем ещё копию.
+    ================================================== */
+
+  const beforeSlides = originalSlides.map((image) => {
+    const clone = image.cloneNode(true);
+
+    clone.dataset.clone = "before";
+
+    return clone;
+  });
+
+  const afterSlides = originalSlides.map((image) => {
+    const clone = image.cloneNode(true);
+
+    clone.dataset.clone = "after";
+
+    return clone;
+  });
+
+  /* ==================================================
+       ДОБАВЛЯЕМ КОПИИ СЛЕВА
+    ================================================== */
+
+  beforeSlides
+    .slice()
+    .reverse()
+    .forEach((image) => {
+      track.insertBefore(image, track.firstChild);
+    });
+
+  /* ==================================================
+       ДОБАВЛЯЕМ КОПИИ СПРАВА
+    ================================================== */
+
+  afterSlides.forEach((image) => {
+    track.appendChild(image);
+  });
+
+  /* ==================================================
+       ВСЕ ФОТОГРАФИИ
+    ================================================== */
+
+  const slides = Array.from(track.querySelectorAll("img"));
+
+  /* ==================================================
+       ТЕКУЩАЯ ПОЗИЦИЯ
+
+       Начинаем на первой оригинальной фотографии,
+       а не на первой копии.
+    ================================================== */
+
+  let currentIndex = originalCount;
+
+  /* ==================================================
+       ПОЛУЧАЕМ ШИРИНУ ОДНОГО СЛАЙДА
+    ================================================== */
+
+  function getSlideWidth() {
+    const slide = slides[0];
+
+    if (!slide) {
+      return 0;
     }
 
+    const styles = window.getComputedStyle(track);
 
-    const slides = Array.from(track.querySelectorAll("img"));
+    const gap = parseFloat(styles.gap) || 0;
 
-    let currentIndex = 0;
+    return slide.getBoundingClientRect().width + gap;
+  }
 
+  /* ==================================================
+       ПЕРЕМЕЩЕНИЕ
+    ================================================== */
 
-    /* =========================================
-       НАСТРОЙКИ
-    ========================================= */
+  function moveCarousel(animated = true) {
+    const slideWidth = getSlideWidth();
 
-    function getGap() {
-
-        const styles = window.getComputedStyle(track);
-
-        return parseFloat(styles.gap) || 0;
-
+    if (!slideWidth) {
+      return;
     }
 
-
-    function getSlideWidth() {
-
-        if (!slides.length) {
-            return 0;
-        }
-
-        return slides[0].getBoundingClientRect().width + getGap();
-
+    if (animated) {
+      track.style.transition = "transform .55s cubic-bezier(.22,.61,.36,1)";
+    } else {
+      track.style.transition = "none";
     }
 
+    track.style.transform = `translate3d(
+                -${currentIndex * slideWidth}px,
+                0,
+                0
+            )`;
+  }
 
-    /* =========================================
-       ДВИЖЕНИЕ КАРУСЕЛИ
-    ========================================= */
-
-    function updateCarousel() {
-
-        const slideWidth = getSlideWidth();
-
-        track.style.transform =
-            `translateX(-${currentIndex * slideWidth}px)`;
-
-    }
-
-
-    /* =========================================
+  /* ==================================================
        СЛЕДУЮЩАЯ ФОТОГРАФИЯ
-    ========================================= */
+    ================================================== */
 
-    nextButton.addEventListener("click", () => {
+  function nextSlide() {
+    currentIndex++;
 
-        currentIndex++;
+    moveCarousel(true);
+  }
 
-        if (currentIndex >= slides.length) {
-            currentIndex = 0;
-        }
-
-        updateCarousel();
-
-    });
-
-
-    /* =========================================
+  /* ==================================================
        ПРЕДЫДУЩАЯ ФОТОГРАФИЯ
-    ========================================= */
+    ================================================== */
 
-    prevButton.addEventListener("click", () => {
+  function previousSlide() {
+    currentIndex--;
 
-        currentIndex--;
+    moveCarousel(true);
+  }
 
-        if (currentIndex < 0) {
-            currentIndex = slides.length - 1;
-        }
+  /* ==================================================
+       КНОПКА ВПЕРЁД
+    ================================================== */
 
-        updateCarousel();
+  nextButton.addEventListener("click", nextSlide);
 
-    });
+  /* ==================================================
+       КНОПКА НАЗАД
+    ================================================== */
 
+  prevButton.addEventListener("click", previousSlide);
 
-    /* =========================================
-       ПЕРЕСЧЁТ ПРИ ИЗМЕНЕНИИ РАЗМЕРА
-    ========================================= */
+  /* ==================================================
+       БЕСКОНЕЧНОСТЬ
 
-    window.addEventListener("resize", () => {
+       Когда доходим до копии справа —
+       незаметно возвращаемся в оригинальный блок.
 
-        updateCarousel();
+       Пользователь этого не видит,
+       потому что фотографии одинаковые.
+    ================================================== */
 
-    });
+  track.addEventListener("transitionend", () => {
+    /*
+     * Слишком далеко вправо
+     */
 
+    if (currentIndex >= originalCount * 2) {
+      currentIndex -= originalCount;
 
-    /* =========================================
+      moveCarousel(false);
+    }
+
+    /*
+     * Слишком далеко влево
+     */
+
+    if (currentIndex < originalCount) {
+      currentIndex += originalCount;
+
+      moveCarousel(false);
+    }
+  });
+
+  /* ==================================================
        СВАЙП НА ТЕЛЕФОНЕ
-    ========================================= */
+    ================================================== */
 
-    let touchStartX = 0;
-    let touchEndX = 0;
+  let touchStartX = 0;
 
+  let touchStartY = 0;
 
-    track.addEventListener(
-        "touchstart",
-        (event) => {
+  track.addEventListener(
+    "touchstart",
+    (event) => {
+      touchStartX = event.changedTouches[0].screenX;
 
-            touchStartX =
-                event.changedTouches[0].screenX;
+      touchStartY = event.changedTouches[0].screenY;
+    },
+    {
+      passive: true,
+    },
+  );
 
-        },
-        { passive: true }
-    );
+  track.addEventListener(
+    "touchend",
+    (event) => {
+      const touchEndX = event.changedTouches[0].screenX;
 
+      const touchEndY = event.changedTouches[0].screenY;
 
-    track.addEventListener(
-        "touchend",
-        (event) => {
+      const differenceX = touchStartX - touchEndX;
 
-            touchEndX =
-                event.changedTouches[0].screenX;
+      const differenceY = touchStartY - touchEndY;
 
-            const difference =
-                touchStartX - touchEndX;
+      /*
+       * Если пользователь больше
+       * двигался вверх/вниз —
+       * это не свайп карусели.
+       */
 
+      if (Math.abs(differenceY) > Math.abs(differenceX)) {
+        return;
+      }
 
-            /* Слишком маленькое движение
-               не считаем свайпом */
+      /*
+       * Слишком короткий свайп
+       */
 
-            if (Math.abs(difference) < 40) {
-                return;
-            }
+      if (Math.abs(differenceX) < 40) {
+        return;
+      }
 
+      if (differenceX > 0) {
+        nextSlide();
+      } else {
+        previousSlide();
+      }
+    },
+    {
+      passive: true,
+    },
+  );
 
-            if (difference > 0) {
+  /* ==================================================
+       ПЕРЕТАСКИВАНИЕ МЫШКОЙ
+    ================================================== */
 
-                // Свайп влево
-                nextButton.click();
+  let mouseStartX = 0;
 
-            } else {
+  let mouseDown = false;
 
-                // Свайп вправо
-                prevButton.click();
+  track.addEventListener("mousedown", (event) => {
+    mouseDown = true;
 
-            }
+    mouseStartX = event.clientX;
 
-        },
-        { passive: true }
-    );
+    track.style.cursor = "grabbing";
+  });
 
+  track.addEventListener("mouseup", (event) => {
+    if (!mouseDown) {
+      return;
+    }
 
-    /* =========================================
-       ПЕРЕТАСКИВАНИЕ МЫШКОЙ НА ПК
-    ========================================= */
+    mouseDown = false;
 
-    let mouseStartX = 0;
-    let mouseDown = false;
+    track.style.cursor = "default";
 
+    const difference = mouseStartX - event.clientX;
 
-    track.addEventListener("mousedown", (event) => {
+    /*
+     * Слишком короткое движение
+     */
 
-        mouseDown = true;
+    if (Math.abs(difference) < 50) {
+      return;
+    }
 
-        mouseStartX = event.clientX;
+    if (difference > 0) {
+      nextSlide();
+    } else {
+      previousSlide();
+    }
+  });
 
-        track.style.cursor = "grabbing";
+  track.addEventListener("mouseleave", () => {
+    mouseDown = false;
 
-    });
+    track.style.cursor = "default";
+  });
 
-
-    track.addEventListener("mouseup", (event) => {
-
-        if (!mouseDown) {
-            return;
-        }
-
-        mouseDown = false;
-
-        track.style.cursor = "default";
-
-
-        const difference =
-            mouseStartX - event.clientX;
-
-
-        if (Math.abs(difference) < 50) {
-            return;
-        }
-
-
-        if (difference > 0) {
-
-            nextButton.click();
-
-        } else {
-
-            prevButton.click();
-
-        }
-
-    });
-
-
-    track.addEventListener("mouseleave", () => {
-
-        mouseDown = false;
-
-        track.style.cursor = "default";
-
-    });
-
-
-    /* =========================================
+  /* ==================================================
        КОЛЕСО МЫШИ
-    ========================================= */
+    ================================================== */
 
-    track.addEventListener(
-        "wheel",
-        (event) => {
+  track.addEventListener(
+    "wheel",
+    (event) => {
+      /*
+       * Если пользователь
+       * горизонтально скроллит —
+       * не вмешиваемся.
+       */
 
-            /*
-             * Работаем только если пользователь
-             * крутит вертикальное колесо.
-             */
+      if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+        return;
+      }
 
-            if (
-                Math.abs(event.deltaY) <=
-                Math.abs(event.deltaX)
-            ) {
-                return;
-            }
+      event.preventDefault();
 
+      if (event.deltaY > 0) {
+        nextSlide();
+      } else {
+        previousSlide();
+      }
+    },
+    {
+      passive: false,
+    },
+  );
 
-            event.preventDefault();
+  /* ==================================================
+       ПЕРЕСЧЁТ ПРИ ИЗМЕНЕНИИ ОКНА
+    ================================================== */
 
+  window.addEventListener("resize", () => {
+    moveCarousel(false);
+  });
 
-            if (event.deltaY > 0) {
+  /* ==================================================
+       ПЕРВОНАЧАЛЬНАЯ ПОЗИЦИЯ
+    ================================================== */
 
-                nextButton.click();
-
-            } else {
-
-                prevButton.click();
-
-            }
-
-        },
-        { passive: false }
-    );
-
-
-    /* =========================================
-       ПЕРВОНАЧАЛЬНЫЙ ЗАПУСК
-    ========================================= */
-
-    updateCarousel();
-
+  requestAnimationFrame(() => {
+    moveCarousel(false);
+  });
 });
