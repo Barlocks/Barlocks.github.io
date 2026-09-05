@@ -1,235 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Твой момент</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-
-<body>
-
+  <body>
     <main class="site">
+      <section class="hero">
+        <!-- =====================================
+        ВЕРХНЯЯ СТРОКА
+        ====================================== -->
+        <header class="topbar">
+          <div class="topbar-left">Kak proshlo leto...</div>
+          <div class="topbar-center">VK</div>
 
-        <section class="hero">
+          <div class="topbar-right">Zvezdniy Breeze</div>
+        </header>
 
+        <!-- =====================================
+         ПЕРВЫЙ БЛОК
+         ====================================== -->
 
-            <!-- =====================================
-                 ВЕРХНЯЯ СТРОКА
-            ====================================== -->
+        <div class="hero-content">
+          <div class="intro">
+            <h1>This summer</h1>
 
-            <header class="topbar">
+            <p>
+              I spent most of my time working at the "Zvezdniy Breeze"
+              children's summer camp. Back in early spring, I decided that this
+              summer I would work as a camp counselor, and our student squad
+              Alpha helped me with that. My first shift was with the oldest age
+              group; at that time, I was just getting to know the team. Now I
+              have many acquaintances and friends from this camp.
+            </p>
+          </div>
 
-                <div class="topbar-left">
-                    Kak proshlo leto...
-                </div>
+          <div class="portrait-wrap">
+            <img src="img1.jpg" alt="Moment" />
+          </div>
+        </div>
 
-                <div class="topbar-center">
-                    VK
-                </div>
+        <!-- =====================================
+         BEST MOMENTS
+         ====================================== -->
 
-                <div class="topbar-right">
-                    Zvezdniy Breeze
-                </div>
+        <section class="moments">
+          <h2>Best moments</h2>
 
-            </header>
+          <div class="carousel-wrap">
+            <div class="carousel-window">
+              <div class="carousel-track" id="momentsTrack">
+                <img src="img2.jpg" alt="Moment 1" />
 
+                <img src="img3.jpg" alt="Moment 2" />
 
+                <img src="img4.jpg" alt="Moment 3" />
 
-            <!-- =====================================
-                 ПЕРВЫЙ БЛОК
-            ====================================== -->
+                <img src="img5.jpg" alt="Moment 4" />
 
-            <div class="hero-content">
+                <img src="img6.jpg" alt="Moment 5" />
 
+                <img src="img7.jpg" alt="Moment 6" />
 
-                <div class="intro">
+                <img src="img8.jpg" alt="Moment 7" />
 
-                    <h1>
-                        This summer
-                    </h1>
-
-
-                    <p>
-                        I spent most of my time working at the "Zvezdniy Breeze"
-                        children's summer camp. Back in early spring, I decided
-                        that this summer I would work as a camp counselor, and our
-                        student squad Alpha helped me with that. My first shift was
-                        with the oldest age group; at that time, I was just getting to
-                        know the team. Now I have many acquaintances and friends from
-                        this camp.
-                    </p>
-
-                </div>
-
-
-
-                <div class="portrait-wrap">
-
-                    <img
-                        src="img1.jpg"
-                        alt="Moment"
-                    >
-
-                </div>
-
+                <img src="img9.jpg" alt="Moment 8" />
+              </div>
             </div>
 
+            <div class="carousel-controls">
+              <button
+                class="arrow"
+                id="prevMoment"
+                aria-label="Предыдущие фотографии"
+              >
+                ←
+              </button>
 
-
-            <!-- =====================================
-                 BEST MOMENTS
-            ====================================== -->
-
-            <section class="moments">
-
-                <h2>
-                    Best moments
-                </h2>
-
-
-                <div class="carousel-wrap">
-
-
-                    <div class="carousel-window">
-
-                        <div
-                            class="carousel-track"
-                            id="momentsTrack"
-                        >
-
-                            <img
-                                src="img2.jpg"
-                                alt="Moment 1"
-                            >
-
-                            <img
-                                src="img3.jpg"
-                                alt="Moment 2"
-                            >
-
-                            <img
-                                src="img4.jpg"
-                                alt="Moment 3"
-                            >
-
-                            <img
-                                src="img5.jpg"
-                                alt="Moment 4"
-                            >
-
-                            <img
-                                src="img6.jpg"
-                                alt="Moment 5"
-                            >
-
-                            <img
-                                src="img7.jpg"
-                                alt="Moment 6"
-                            >
-
-                            <img
-                                src="img8.jpg"
-                                alt="Moment 7"
-                            >
-
-                            <img
-                                src="img9.jpg"
-                                alt="Moment 8"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="carousel-controls">
-
-                        <button
-                            class="arrow"
-                            id="prevMoment"
-                            aria-label="Предыдущие фотографии"
-                        >
-                            ←
-                        </button>
-
-
-                        <button
-                            class="arrow"
-                            id="nextMoment"
-                            aria-label="Следующие фотографии"
-                        >
-                            →
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =====================================
-                 WONDERFUL PEOPLE
-            ====================================== -->
-
-            <section class="people">
-
-                <h2>
-                    Wonderful people
-                </h2>
-
-
-                <div class="people-grid">
-
-                    <img
-                        src="img10.jpg"
-                        alt="Люди"
-                    >
-
-                    <img
-                        src="img11.jpg"
-                        alt="Люди"
-                    >
-
-                    <img
-                        src="img12.jpg"
-                        alt="Люди"
-                    >
-
-                    <img
-                        src="img13.jpg"
-                        alt="Люди"
-                    >
-
-                </div>
-
-
-                <p class="ending">
-                    Именно из таких маленьких моментов<br>
-                    и складываются большие воспоминания...
-                </p>
-
-            </section>
-
-
+              <button
+                class="arrow"
+                id="nextMoment"
+                aria-label="Следующие фотографии"
+              >
+                →
+              </button>
+            </div>
+          </div>
         </section>
 
+        <!-- =====================================
+        WONDERFUL PEOPLE
+        ====================================== -->
+
+        <section class="people">
+          <h2>Wonderful people</h2>
+
+          <div class="people-grid">
+            <img src="img10.jpg" alt="Люди" />
+
+            <img src="img11.jpg" alt="Люди" />
+
+            <img src="img12.jpg" alt="Люди" />
+
+            <img src="img13.jpg" alt="Люди" />
+          </div>
+
+          <p class="ending">
+            Именно из таких маленьких моментов<br />
+            и складываются большие воспоминания...
+          </p>
+        </section>
+      </section>
     </main>
 
-
-    <script src="script.js"></script>
-
-</body>
-
+    >
+  </body>
 </html>
