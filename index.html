@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My summer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="hero">
+        <header class="nav">
+          <div class="nav__left">Kak proshlo leto...</div>
+          <div class="nav__center"><a class="nav__center-url" href="https://vk.ru/ossatov">VK</a></div>
+          
+          <div class="nav__right">
+            Zvezdniy Breeze
+            <button class="nav__theme-btn" id="themeButton" type="button">☀</button>
+          </div>
+        </header>
+
+        <div class="main__content">
+          <div class="main__intro">
+            <h1 class="main__title">This summer</h1>
+            <p class="main__text">
+              I spent most of my time working at the "Zvezdniy Breeze"
+              children's summer camp. Back in early spring, I decided that this
+              summer I would work as a camp counselor, and our student squad
+              Alpha helped me with that. My first shift was with the oldest age
+              group; at that time, I was just getting to know the team. Now I
+              have many acquaintances and friends from this camp.
+            </p>
+          </div>
+
+          <div class="main__Photos">
+            <img class="main__Photos-img" src="Photos/main-photo.jpg" alt="Portrait moment" />
+          </div>
+        </div>
+
+        <section class="moments">
+          <h2 class="moments__title">Best moments</h2>
+
+          <div class="moments__carousel">
+            <div class="moments__window">
+              <div class="moments__track" id="momentsTrack">
+                <img class="moments__slide" src="Photos/moments-1.jpg" alt="Moment 1" />
+                <img class="moments__slide" src="Photos/moments-2.jpg" alt="Moment 2" />
+                <img class="moments__slide" src="Photos/moments-3.jpg" alt="Moment 3" />
+                <img class="moments__slide" src="Photos/moments-4.jpg" alt="Moment 4" />
+                <img class="moments__slide" src="Photos/moments-5.jpg" alt="Moment 5" />
+                <img class="moments__slide" src="Photos/moments-6.jpg" alt="Moment 6" />
+                <img class="moments__slide" src="Photos/moments-7.JPG" alt="Moment 7" />
+                <img class="moments__slide" src="Photos/moments-8.jpg" alt="Moment 8" />
+              </div>
+            </div>
+
+            <div class="moments__controls">
+              <button class="moments__arrow" id="prevMoment" type="button" aria-label="Предыдущие фотографии">←</button>
+              <button class="moments__arrow" id="nextMoment" type="button" aria-label="Следующие фотографии">→</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="people">
+          <h2 class="people__title">Wonderful people</h2>
+          <div class="people__grid">
+            <img class="people__item people__item--tall-left" src="Photos/people-1.jpg" alt="People group 1" />
+            <img class="people__item people__item--top" src="Photos/people-2.jpg" alt="People group 2" />
+            <img class="people__item people__item--bottom" src="Photos/people-3.jpg" alt="People group 3" />
+            <img class="people__item people__item--tall-right" src="Photos/people-4.jpg" alt="People group 4" />
+          </div>
+          <p class="people__ending">
+            Именно из таких маленьких моментов<br />
+            и складываются большие воспоминания...
+          </p>
+        </section>
+      </section>
+    </main>
+    <footer class="footer">
+        <h2 class="footer__title">Итоги лета</h2>
+        <div class="footer__stats">
+          <div class="footer__stat">
+            <span class="footer__stat-number">3</span>
+            <span class="footer__stat-label">смены в лагере</span>
+          </div>
+          <div class="footer__stat">
+            <span class="footer__stat-number">+34</span>
+            <span class="footer__stat-label">новых знакомых</span>
+          </div>
+          <div class="footer__stat">
+            <span class="footer__stat-number">10</span>
+            <span class="footer__stat-label">дней дома за всё лето</span>
+          </div>
+        </div>
+        <p class="footer__text">
+          Лето пролетело слишком быстро, но оставило после себя<br />
+          тепло, которое останется со мной надолго.<br />
+          Спасибо всем, кто сделал эти дни особенными.
+        </p>
+      </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
